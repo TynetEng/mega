@@ -47,7 +47,7 @@
                 <div class="panel">
                     <form action="{{route('blog')}}" method="POST">
                         <div class="inp">
-                            <input type="text" name="title" placeholder="Post Title" required class="form-control">
+                            <input type="text" name="title" placeholder="Title" required class="form-control">
                         </div>
                         <div class="edit">
                             <button onclick="boldText()" type="button">B</button>
@@ -58,7 +58,7 @@
                             <button onclick="justifyCenter()" type="button"><i class="fa fa-align-center"></i></button>
                             <button onclick="justifyRight()" type="button"><i class="fa fa-align-right"></i></button>
                             <button onclick="justify()" type="button"><i class="fa fa-align-justify"></i></button>
-                            <input type="color" id="colour" oninput="colr()">
+                            {{-- <input type="color" id="colour" oninput="colr()"> --}}
                             <select name="" id="">
                                 <option value="12">12</option>
                                 <option value="14">14</option>
@@ -66,6 +66,7 @@
                                 <option value="18">18</option>
                                 <option value="20">20</option>
                             </select>
+                            <input type="file" placeholder="select image">
                         </div>
                         <div>
                             <input type="text" name="blog" id="blog" hidden required>
@@ -86,6 +87,7 @@
             
             .headie{
                 width: 100%;
+                padding-top: 70px !important;
             }
             .parent {
                 padding: 0% !important;

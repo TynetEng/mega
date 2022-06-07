@@ -12,58 +12,71 @@
         @include('include.nav')
     </div>
     <div class="parent">
-        <div class="team">
-            @foreach ($userImage as $a )
-                @foreach ($uploadedImg as $i)
-                    @if ($a->image==$i->image)
-                        <div>
-                            <img id="image">
-                        </div>
-                    @elseif ($a->image==NULL)
-                        <div class='img'>
-                                    
-                            <span class='let'>{{$first}}</span>
-                            <span class='let'>{{$second}}</span>
-                        </div>
-                    @endif
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{session('success')}}
+            </div>
+        @endif
+        <div class="panel">
+            <div class="team">
+                @foreach ($userImage as $a )
+                    @foreach ($uploadedImg as $i)
+                        @if ($a->image==$i->image)
+                            <div>
+                                <img id="imaggg" src="{{asset('images/'.$i->image)}}">
+                            </div>
+                        @elseif ($a->image==NULL)
+                            <div class='img'>
+                                        
+                                <span class='let'>{{$first}}</span>
+                                <span class='let'>{{$second}}</span>
+                            </div>
+                        @endif
+                    @endforeach
                 @endforeach
-            @endforeach
-            
-            
-        </div>
-        <div>
-            <table>
-                <tr>
-                    <td>
-                        <b>Name</b>
-                    </td>
-                    <td>{{$user->firstName}} {{$user->lastName}}</td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Email</b>
-                    </td>
-                    <td>{{$user->email}}</td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>Phone Number</b>
-                    </td>
-                    <td>{{$user->phoneNumber}}</td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <form action='{{route('profile')}}' method='post' enctype="multipart/form-data">
-                <div class="imgBox">
-                    <input type='file' name='image' value="{{old('image')}}" class="form-control @error('image') is-inavlid @enderror">
-                </div>
-                @error('image')
-                    <small class="text-danger">{{$message}}</small>
-                @enderror
-                @csrf
-                <button type="submit" name="submit" class="btn">UPLOAD</button>
-            </form>
+                
+                
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <b>Name</b>
+                        </td>
+                        <td>{{$user->firstName}} {{$user->lastName}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Email</b>
+                        </td>
+                        <td>{{$user->email}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Phone Number</b>
+                        </td>
+                        <td>{{$user->phoneNumber}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <form action='{{route('profile')}}' method='post' enctype="multipart/form-data">
+                    <div>
+                        <div class="image">
+                            <i class="fa fa-avatar"></i>
+                            <img src="" alt=""  class="imagg">
+                        </div>
+                        <div class="imgBox">
+                            <input type="file" name="image"  value="{{old('image')}}" onchange="displayImage()" class="@error('image') is-inavlid @enderror img"><br>
+                            @error('image')
+                                <small class="text-danger">{{$message}}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    @csrf
+                    <button type="submit" name="submit" class="btn">UPLOAD</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -83,52 +96,91 @@
         .imgBox{
             width: 25% !important;
         }
+        
+        .image{
+            width: 100px;
+            height: 100px;
+            border: 1px solid lightgrey;
+            margin: 5px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .imagg{
+            width: 100%;
+            height: 100%;
+            border: 1px solid lightgrey;
+        }
+
         .btn{
             background-color: lightseagreen;
             margin-top: 10px;
             color: white
         }
         .team{
-            margin: auto
+            margin: auto;
+            padding: 5px;
         }
-        #image{
+        #imaggg{
             width: 50px;
             height: 50px;
             border-radius: 50%
         }
-
-        .img{
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid lightgrey;
-            background-color: lightseagreen;
-            margin: auto;    
-            margin-top: 1%;
+        .panel{
+            border: 1px solid lightgray;
+            width: 30%;
+            padding: 10px;
+            margin: 5px;
+            margin-top: 10px !important;
+            border-radius: 5px;
+            margin: auto;
+            box-shadow: 0px 2px 10px rgba(200, 208, 216, 0.3);
+            animation: animatezoom 0.6s;
+        }
+        @keyframes animatezoom{
+            from{
+                transform: scale(0);
+            }
+            to{
+                transform: scale(1);
+            }
         }
         .let{
             font-size: 30px;
             color: white;
         }
+
+        @media(max-width:760px){
+            .panel{
+                width:100%;
+                margin: 0px !important;
+                border-radius: 0px;
+            }
+            #imaggg{
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+
+        }
     </style>
 
-    <!-- <script>
-        function sum(){
-            let nums = [5,10, 20];
+    <script>
+        document.querySelector('.imagg').style.display = "none";
 
-            console.log(nums.sort()[1])
+        // TO DISPLAY IMAGE ONCHANGE
+        function displayImage(){
+            document.querySelector('.imagg').style.display = "inherit";
+            let reader = new FileReader;
+            let img = document.querySelector('.img').files[0];
+
+            reader.onload=function(){
+                document.querySelector('.imagg').src=reader.result;
+            }
+            reader.readAsDataURL(img);
+
         }
-        sum();
-    </script> -->
+    </script>
 </body>
 </html>
-<script>
-    let userImage=@json($userImage);
-    console.log(userImage);
-    setTimeout(() => {
-        document.getElementById('image').src=`{{url('storage/${userImage[0].image}')}}`
-    }, 1000);
-</script>
+

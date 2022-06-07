@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
          <script src="//unpkg.com/alpinejs" defer></script>
         <!-- Styles -->
         
@@ -32,7 +33,7 @@
                     </a>
                 </div>
                 <div class="text-center">
-                    <h4> Admin login</h4>
+                    <h4>Login</h4>
                 </div>
                 <form action="{{route('login')}}" method="post">
                     @if($su=Session::get('error'))
@@ -83,7 +84,7 @@
                             <label for="remember" class="rmb">Remember me</label for="remember">
                         </div>
                         <div>
-                            <a href="" class="text-decoration-none">Forgot password?</a>
+                            <a href="" class="text-decoration-none pat">Forgot password?</a>
                         </div>
                     </div>
                     @csrf
@@ -92,7 +93,7 @@
                     </div>
                 </form>
                 <footer class="text-center">
-                    <p>Not registered yet? <span><a href="/signup" class="text-decoration-none">Create an account</a></span></p>
+                    <p>Not registered yet? <span><a href="/signup" class="text-decoration-none pat">Create an account</a></span></p>
                 </footer>
             </div>
             
@@ -135,7 +136,7 @@
             }
             .logg button{
                 border: 0px;
-                background-color: rgb(154, 3, 30);
+                background-color: #027979;
                 color: white;
                 border-radius: 5px;
                 padding: 2px 10px;
@@ -147,6 +148,9 @@
             .rmb{
                 font-weight: 400
             }
+            .pat{
+                color: #027979;
+            }
     
             @media(max-width:760px){
                 .parent{
@@ -154,5 +158,15 @@
                 }
             }
         </style>
+
+        <script>
+            let display = document.querySelector('.inputt');
+            
+            function togglePassword(params){
+                let result = display.getAttribute('type')==="password" ? "text" : "password";
+                display.setAttribute("type", result);
+                params.classList.toggle("fa-eye-slash");
+            }
+        </script>
     </body>
 </html>

@@ -59,6 +59,13 @@ Route::post('/signup', function ( Request $request) {
     }
 })->name('sign');
 
+// GOOGLE SOCIALITE
+Route::get('/auth/redirect', 'App\Http\Controllers\UserLoginController@redirect');
+
+// USER GOOGLE LOGIN
+Route::get('auth/google/callback', 'App\Http\Controllers\UserLoginController@callback');
+
+
 // LOGIN
 Route::get('/login', function(){
     return view('login');
@@ -158,7 +165,7 @@ Route::post('/password/reset', function(Request $request){
 
 // ADMIN LOGOUT
 Route::get('/logout', function(Request $request){
-    auth()->guard('user')->logout();
+    Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
 
@@ -188,29 +195,28 @@ Route::get('/blog', function(){
 Route::post('/blog', function(Request $request){
     $validateUser = auth()->user()->id;
     
-    if(!$validateUser){
-        return redirect()->route('signup');
-    }
-    $request->validate([
-        'title'=>'required',
-        'blog'=>'required'
-    ]);
-    $blog= DB::table('blogs')->insert([
-        'title'=>$request->title,
-        'content'=>$request->blog,
-        'user_id'=>$validateUser,
-        'time'=>now(),
-        'view'=>0,
-        'image'=>0
-    ]); 
-    
-    if(!$blog){
+    try {
+        if(!$validateUser){
+            return redirect()->route('signup');
+        }
+        $request->validate([
+            'title'=>'required',
+            'blog'=>'required'
+        ]);
+        $blog= DB::table('blogs')->insert([
+            'title'=>$request->title,
+            'content'=>$request->blog,
+            'user_id'=>$validateUser,
+            'time'=>now(),
+            'view'=>0,
+            'image'=>0
+        ]); 
+        session()->flash('success', 'Blog posted successfully');
+        return redirect()->back();
+    }catch (\Throwable $th) {
         session()->flash('error', 'ERROR');
         return redirect()->back();
     }
-    
-    session()->flash('success', 'Blog posted successfully');
-    return redirect()->back();
 })->name('blog');
 
 //NAVBAR
@@ -222,18 +228,22 @@ Route::get('/nav', function(){
 // BLOG POST
 Route::get('/blog_post', function(){
     $blogs = DB::table('blogs')->get();
-    $poster =  auth()->user()->id;
-    return view('blog_post')->with(['blogs'=>$blogs, 'poster'=>$poster]);
+    
+    $show = DB::table('users')->get();
+    
+    return view('blog_post')->with(['blogs'=>$blogs, 'show'=>$show]);
 });
 
 // SINGLE BLOG POST
 Route::get('/single_post', function(Request $request){
     
     $id = $request->blog_id;
-  
-    $blogs = DB::table('blogs')->get();
+ 
+    $blogs = DB::table('blogs')
+            ->where('id', $id)
+            ->get();
     
-    return view('single_post')->with(['blog'=>$blogs[$id]]);
+    return view('single_post')->with(['blog'=>$blogs]);
 });
 
 // EDIT BLOG POST
@@ -245,6 +255,20 @@ Route::get('/edit_blog', function(Request $request){
     return view('edit_blog')->with(['check'=>$check]);
 });
 
+
+// DELETE CONTESTANT FORM
+Route::post('delete-blog/{id}', function(Request $request, $id){
+    try {
+         $blog = DB::table('blogs')
+         ->where('id',$id)            
+         ->delete();
+
+         echo session()->flash('success', 'Blog details deleted successfully');
+         return redirect('edit_blog');
+    } catch (\Throwable $th) {
+        return "error";
+    }
+ })->name('delete-blog');
 
 // UPDATE BLOG
 Route::get('/update/{id}', function(Request $request, $id){
@@ -290,19 +314,6 @@ Route::get('/profile', function(){
     ->where('id', $validateUser)
     ->get();
     
-    // foreach ($check as $a) {
-    //     return $a;
-    // }
-    
-    // foreach ($img as $i) {
-    //     return $i;
-    //     if($i==$check){
-    //         return "Hello";
-    //     }
-    //     return "false";
-    // }
-    
-  
     return view('profile')->with(['user'=>$user,'first'=>$first, 'second'=>$sec,'uploadedImg'=>$check, 'userImage'=>$img]);
 })->name('profile');
 
@@ -312,43 +323,42 @@ Route::post('profile', function(Request $req){
     $data = User::find($validateUser);
     
     $req->validate([
-        'image'=>"required"
+        'image'=>"required|image|mimes:png,jpg,jpeg|max:5048"
     ]);
-    $image = $req->image;
+    try {
+        $image = $req->image;
     
-    if($image !== null){
-        $gen= mt_rand(10000, 90000);
-        $ext= $req->image->extension();
-        $path= $gen . ".". $ext;
-        $show= $req->image->storeAs('image', $path);
-        
+        if($image !== null){
+            $gen= mt_rand(10000, 90000);
+            $ext= $req->image->extension();
+            $path= $gen . ".". $ext;
+            $show= $req->image->move(public_path('images'), $path);
+            
 
-        $display = DB::table('users')
-                ->where('id', $validateUser)
-                ->update([
-                    'email'=>$data->email,
-                    'password'=>Hash::make($data->password),
-                    "firstName"=>$data->firstName,
-                    "lastName"=>$data->lastName,
-                    "phoneNumber"=>$data->phoneNumber,
-                    'image'=>$show,
-                    'updated_at'=>now()
-        ]);
+            $display = DB::table('users')
+                    ->where('id', $validateUser)
+                    ->update([
+                        'email'=>$data->email,
+                        'password'=>Hash::make($data->password),
+                        "firstName"=>$data->firstName,
+                        "lastName"=>$data->lastName,
+                        "phoneNumber"=>$data->phoneNumber,
+                        'image'=>$path,
+                        'updated_at'=>now()
+            ]);
+        }
+    
+        // $check = DB::table('users')
+        // ->where('id', $validateUser)
+        // ->get('image');
+
+        if($display){
+            session()->flash('success', 'Profile picture uploaded successfully');
+            return redirect('profile');
+        }
+    } catch (\Throwable $th) {
+        return "error";
     }
-    
-    $check = DB::table('users')
-    ->where('id', $validateUser)
-    ->get('image');
-
-  
-    
-    var_dump($check);
-
-    if($check){
-        return redirect('profile');
-    }
-    return "false";
-
 });
 
 Route::get('/welcome', function(Request $request){ 

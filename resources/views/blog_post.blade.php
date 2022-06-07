@@ -11,24 +11,38 @@
     <div>
         @include('include.nav')
     </div>
-    <div class="parent">
-        <div class="panel">
-            @foreach ( $blogs as $blog )
-                <div class='fill'>
-                    <div class='blog'>
-                        
-                        @if ($blog->user_id ==$poster)
-                            <h6>{{auth()->user()->firstName}}</h6>
-                        @endif
-
-                    <div> 
-                    <div>
-                        <h3><a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>{{$blog->title}}</a></h3>
-                        <p class='cont'>{{$blog->content}}<span class='bit'>...read more</span></p>
+    <div class="container">
+        <div class="parent">
+            <div class="panel">
+                @foreach ( $blogs as $blog )
+                    <div class='fill'>
+                        <div>
+                            <h3><a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>{{$blog->title}}</a></h3>
+                            <p class='cont'>{!! $blog->content !!}
+                                <span class='bit'>
+                                    <a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>...read more</a>
+                                </span>
+                            </p>
+                        </div>
+                        <div class='blog'>
+                            @foreach ($show as $i)
+                                @if ($blog->user_id == $i->id)
+                                    <p class="d-flex align-items-center"> 
+                                        <span class="own">Blog:</span>
+                                        <span class="displayName">{{$i->firstName}} {{$i->lastName}}</span>
+                                        <span class="px-2 displayTime"><i>{{$blog->time}}</i></span>
+                                    </p>
+                                @endif
+                            @endforeach
+                            <p>
+                                <span>View:</span>
+                            </p>
+                        <div>
+                        <div class="und"></div>
                     </div>
-                </div>
-            
-            @endforeach
+                
+                @endforeach
+            </div>
         </div>
     </div>
 
@@ -40,11 +54,13 @@
             width: 100% !important;
         }
         .parent{
-            width:100% !important;
+            width: 100% !important;
+            z-index: -10;
         }
         .parent .panel {
             display: block;
-            margin: 1% 3%;
+            margin: 0% 3%;
+            padding-top: 70px !important;
         }
         .parent .panel .title {
             font-weight: bold;
@@ -53,8 +69,11 @@
             display: flex;
             justify-content: space-between;
         }
-        .blog{
-            padding-bottom: 30px;
+        .own{
+            font-weight: bold;
+        }
+        .blog{  
+            padding-top: 3px;
         }
         h6{
             font-weight: bold;
@@ -63,8 +82,26 @@
             color: black !important;
             
         }
-        .bit{
+        .fill{
+            padding-top: 5px;
+            padding-bottom: -10px;
+        }
+        .displayName{
             font-weight: bold;
+            font-size: 16px;
+        }
+        .cont{
+            width: 100%;
+        }
+        .bit a{
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+        }
+
+        .und{
+            border-bottom: 3px double teal;
+            
         }
         
 
@@ -89,7 +126,4 @@
     </style>
 </body>
 </html>
-<script>
-    let blog=@json($blogs);
-    console.log(blogs);
-</script>
+

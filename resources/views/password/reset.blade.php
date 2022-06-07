@@ -108,7 +108,7 @@
         }
         .logg button{
             border: 0px;
-            background-color: rgb(154, 3, 30);
+            background-color: #027979;
             color: white;
             border-radius: 5px;
             padding: 2px 10px;

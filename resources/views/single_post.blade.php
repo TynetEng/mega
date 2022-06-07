@@ -11,18 +11,30 @@
     <div>
         @include('include.nav')
     </div>
-    <div class="parent">
-        <div class="panel">
-            <div>
-                <h2><a>{{$blog->title}}</a></h2>
-                <p>{{$blog->content}}</p>
-            </div>   
-        </div>
+    <div class="container">
+        <div class="parent">
+            <div class="panel">
+                <div>
+                    @foreach ($blog as $i)
+                        <h2><a>{!! $i->title !!}</a></h2>
+                        <p>{!! $i->content !!}</p>
+                    @endforeach
+                </div>   
+            </div>
+        </div>    
     </div>
-
     <style>
         .panel{
             padding: 2%;
+        }
+        html, body {
+            margin: 0px !important;
+            padding: 0px !important;
+            padding-top: 0px !important;
+            width: 100% !important;
+        }
+        .parent{
+            width:100% !important;
         }
         @media(max-width:760px){
             .panel{

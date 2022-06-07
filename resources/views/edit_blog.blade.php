@@ -13,13 +13,25 @@
     </div>
     <div class="parent">
         <div class="panel">
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{session('success')}}
+                </div>
+            @endif
             <div>
                 @foreach ($check as $i)
                     <div class="fill">
-                        <h3>{{$i->title}}</h3>
-                        <p class='cont'>{{$i->content}}<span class='bit'>...read more</span></p>
-                        <div>
-                            <button onclick="editBlog({{$i}})">EDIT</button>
+                        <h3>{!! $i->title !!}</h3>
+                        <p class='cont'>{!! $i->content !!}<span class='bit'>...read more</span></p>
+                        <div class="but d-flex">
+                            <div>
+                                <button onclick="editBlog({{$i}})">EDIT</button>
+                            </div>
+                            <form action="{{route('delete-blog', ['id'=>$i->id])}}" method="post">
+                                @csrf
+                                <button class="del" type="submit" onclick="return confirm('Are you sure you want to delete this contestant?')">
+                                     DELETE</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach
@@ -30,6 +42,7 @@
     <style>
         .panel{
             padding: 2%;
+            padding-top: 70px !important;
         }
         .bit{
             font-weight: bold

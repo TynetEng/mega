@@ -71,6 +71,7 @@
                 width: 100%;
                 padding: 0px !important;
                 margin: 0px !important;
+                padding-top: 70px !important;
             }
             .parent .headie h2, .parent .headie h3, html .headie h1, html .headie h3 {
                 text-align: center;

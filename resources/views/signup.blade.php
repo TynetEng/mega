@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
          <script src="//unpkg.com/alpinejs" defer></script>
         <!-- Styles -->
         
@@ -93,11 +94,13 @@
                     <div class="logg">
                         <button type="submit">Register</button>
                     </div>
-                    <div class="cage">
+                    <div class="cage d-flex align-items-center justify-content-center">
+                        <div class="draw"></div>
                         <span>OR</span>
+                        <div class="draw2"></div>
                     </div>
                     <div class="google">
-                        <a href="{{url('admin/auth/redirect')}}">
+                        <a href="{{url('auth/redirect')}}">
                             <span><i class="fa fa-google"></i></span>
                             <span>Continue with Google</span>
                         </a>
@@ -106,7 +109,7 @@
     
                 
                 <div class="pat1">
-                    <p>Already a user? <span><a href="./login" class="text-decoration-none">Login</a></span></p>
+                    <p>Already a user? <span><a href="./login" class="text-decoration-none pat3">Login</a></span></p>
                 </div>
     
                 <div class="pat2">
@@ -152,7 +155,7 @@
         }
         .logg button{
             border: 0px;
-            background-color: rgb(154, 3, 30);
+            background-color: #027979;
             color: white;
             border-radius: 5px;
             padding: 2px 10px;
@@ -162,6 +165,10 @@
             text-align: center;
             padding: 10px 0px 10px 0px;
             
+        }
+        .draw, .draw2{
+            width: 22%;
+            border: 1px solid black !important;
         }
         .google{
             text-align: center;
@@ -184,7 +191,7 @@
             font-size: 12px;
         }
         .pat3{
-            color:blue;
+            color:#027979;
         }
         label{
             font-weight: bold;
@@ -196,5 +203,22 @@
             }
         }
     </style>
+
+    <script>
+        let display = document.querySelector('.inputt');
+        let display2 = document.querySelector('.inputtt');
+        
+        function togglePassword(params){
+            let result = display.getAttribute('type')==="password" ? "text" : "password";
+            display.setAttribute("type", result);
+            params.classList.toggle("fa-eye-slash");
+        }
+
+        function toggleConfirmPassword(params){
+            let result = display2.getAttribute('type')==="password" ? "text" : "password";
+            display2.setAttribute("type", result);
+            params.classList.toggle("fa-eye-slash");
+        }
+    </script>
     </body>
 </html>

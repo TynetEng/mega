@@ -32,7 +32,7 @@
                     <div class="pro">
                         <div class="left">
                             <a href="#" class="navbar-brand">
-                                <img src="./image/mega.png" alt="">
+                                <img src="./image/mega2.png" alt="">
                             </a>
     
                             <button class="navbar-toggler bell"  id="openSideBar">
@@ -46,7 +46,7 @@
                                         <i class="fa fa-search"></i>
                                     </div>
                                     <li class="nav-items">
-                                        <a href="/dash" class="nav-link">
+                                        <a href="/dashboard" class="nav-link">
                                             DASHBOARD
                                         </a>
                                     </li>
@@ -85,7 +85,16 @@
                                                     PROFILE
                                                 </a>
                                             </div>
-                                            <div class="tin">LOGOUT</div>
+                                            <div class="tin">
+                                                <a href="{{route('logout')}}" class="d-flex justify-content-center">
+                                                    <div>
+                                                        <i class="fa fa-sign-out"></i>
+                                                    </div>
+                                                    <div class="exp">
+                                                        <span>LOGOUT</span>
+                                                    </div>
+                                                </a>
+                                            </div>
                                             <div class="tin2">SETTINGS</div>
                                         </div>
                                     </li>
@@ -96,7 +105,7 @@
                     <div class="sideBar">
                         <ul class="navbar-nav">
                             <li class="nav-items">
-                                <a href="/dash" class="nav-link">
+                                <a href="/dashboard" class="nav-link">
                                     DASHBOARD
                                 </a>
                             </li>
@@ -129,7 +138,7 @@
                                 </a>
                             </li>
                             <li class="nav-items">
-                                <a href="#" class="nav-link">
+                                <a href="#" class="nav-link tel">
                                     MY ACCOUNT
                                 </a>
                             </li>
@@ -139,12 +148,12 @@
                                 </a>
                             </li>
                             <li class="nav-items">
-                                <a href="{{route('logout')}}">
+                                <a href="{{route('logout')}}" class="justify-content-center d-flex">
                                     <div>
                                         <i class="fa fa-sign-out"></i>
                                     </div>
                                     <div class="exp">
-                                        <span>Logout</span>
+                                        <span>LOGOUT</span>
                                     </div>
                                 </a>
                             </li>
@@ -162,10 +171,10 @@
 
     <script>
        $(document).ready(function(){
-        $('.sideBar').hide()
-        $('#openSideBar').click(function(){
-            $('.sideBar').toggle()   
-        })
+            $('.sideBar').hide()
+            $('#openSideBar').click(function(){
+                $('.sideBar').toggle()   
+            })
        })
     </script>
 </body>
@@ -177,25 +186,25 @@
     }
     nav{
         width: 100%;
-        top: -10% !important;
-        margin: 0;
-        z-index: 100;
-        background-color: lightseagreen;
+        margin: 0 !important;
         align-items: center;
+    }
+    .header{
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+        background-color: white;
+        border-bottom: 3px solid lightseagreen;
     }
     
     .show a{
-        color: white;
+        color: lightseagreen;
         font-weight: bold;
 
     }
     .show a:hover{
         color: rgb(226, 223, 223);
     }
-    /* .show{
-        display: flex;
-        margin-left: 30% !important;
-    } */
     .sideBar{
         display: none;
     }
@@ -236,7 +245,7 @@
         text-decoration: none;
     }
     img{
-        width: 60%;    
+        width: 35%;    
     }
     .tin2{
         font-weight: bold;
@@ -264,16 +273,19 @@
         .sideBar a{
             color: teal;
         }
+        .bar{
+            color: teal;
+        }
         .left{
             display: flex;
             justify-content: space-between !important;
             align-items: center;
             width: 100% !important;
         }
-        .bell{
-            color: white;
+        .tel{
+            display: none;
         }
-        .bell:focus{
+        .bar:focus{
             border: 2px solid red !important;
             border-radius: 1%;
             transform: rotate(180deg);
@@ -290,8 +302,13 @@
             border: 0 !important;
             outline: 0 !important;
         }
+        img{
+            width: 20% !important;
+        }
+        a{
+            display: flex;
+            text-decoration: none;
+        }
         
     }
-    
-
 </style>
