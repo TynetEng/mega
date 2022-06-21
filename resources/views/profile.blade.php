@@ -163,7 +163,9 @@
                 height: 60px;
                 border-radius: 50%;
             }
-
+            .imagg{
+                width: 100%;
+            }
         }
     </style>
 
