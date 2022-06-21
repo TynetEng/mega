@@ -82,8 +82,10 @@
 
     <style>
         .parent{
+            width: 100%;  
+        }
+        table{
             width: 100%;
-            
         }
         table, tr, td{
             border: 1px solid black;
