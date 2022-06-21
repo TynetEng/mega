@@ -31,16 +31,11 @@ public function callback()
         
 
             if($findUser){
-                // return "hi";
                 Auth::login($findUser);
-                $User = auth()->user();
-                return "heelo";
                 return redirect('/dashboard');
             }
             elseif($duplicateEmail){
                 Auth::login($findUser);
-                $User = auth()->user();
-                return "hi";
                 return redirect('/dashboard');
             }else{
                 $newUser = User::insert([
