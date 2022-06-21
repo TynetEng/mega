@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Signup</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
             <div class="card card-body">
     
                 <div class="cont text-center">
-                    <a href="#" class="navbar-brand">
+                    <a href="#" class="navbar-brand ">
                         <img src="./image/mega2.png" alt="">
                     </a>
                 </div>
@@ -72,6 +72,7 @@
                     </div>
                     <div class=" form-group">
                         <label for="">Password</label>
+                        <i class="fa fa-eye"></i>
                         <div class="d-flex inputContainer align-items-center form-group">
                             <input type="password" class="inputt" value="{{old('password')}}" placeholder="Min. of 8 characters with at least one letter, number, symbol" name="password" class="form-control @error('password') is-inavlid @enderror">
                             <i class="fa fa-eye" onclick="togglePassword(this)"></i>
@@ -136,6 +137,7 @@
         .cont{
             display: flex;
             justify-content: center;
+            margin-left: 6%;
         }
         .inputContainer{
             width: 100%;

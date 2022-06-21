@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Blogs</title>
 </head>
 <body>
     <div>
@@ -18,9 +18,9 @@
                     <div class='fill'>
                         <div>
                             <h3><a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>{{$blog->title}}</a></h3>
-                            <p class='cont'>{!! $blog->content !!}
+                            <p class='cont'>{!! \Str::limit($blog->content, 100) !!}
                                 <span class='bit'>
-                                    <a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>...read more</a>
+                                    <a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>read more </a>
                                 </span>
                             </p>
                         </div>
@@ -35,7 +35,8 @@
                                 @endif
                             @endforeach
                             <p>
-                                <span>View:</span>
+                                <span class="own">Views:</span>
+                                <span>{{$blog->view}}</span>
                             </p>
                         <div>
                         <div class="und"></div>

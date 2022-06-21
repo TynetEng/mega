@@ -197,12 +197,14 @@ Route::post('/blog', function(Request $request){
     
     try {
         if(!$validateUser){
+            session()->flash('error', 'Please signup first');
             return redirect()->route('signup');
         }
         $request->validate([
             'title'=>'required',
             'blog'=>'required'
         ]);
+        
         $blog= DB::table('blogs')->insert([
             'title'=>$request->title,
             'content'=>$request->blog,
@@ -219,6 +221,45 @@ Route::post('/blog', function(Request $request){
     }
 })->name('blog');
 
+// UPLOAD BLOG IMAGE
+Route::post('/post', function(Request $req){
+    $validateBlog = Blog::get('id');
+    dd($validateBlog);
+    $data = Blog::find($validateBlog);
+    $req->validate([
+        'image'=>'required|image|mimes:png,jpg,jpeg|max:5048'
+    ]);
+    
+    try { 
+        $image = $req->image;
+    
+        if($image !== null){
+            $gen= mt_rand(10000, 90000);
+            $ext= $req->image->extension();
+            $path= $gen . ".". $ext;
+            $show= $req->image->move(public_path('images'), $path);
+            
+
+            $display = DB::table('users')
+                    ->where('id', $validateBlog)
+                    ->update([
+                        'email'=>$data->email,
+                        'password'=>Hash::make($data->password),
+                        "firstName"=>$data->firstName,
+                        "lastName"=>$data->lastName,
+                        "phoneNumber"=>$data->phoneNumber,
+                        'image'=>$path,
+                        'updated_at'=>now()
+            ]);
+        }
+        session()->flash('success', 'Blog posted successfully');
+        return redirect()->back();
+    }catch (\Throwable $th) {
+        session()->flash('error', 'ERROR');
+        return redirect()->back();
+    }
+})->name('blogImage');
+
 //NAVBAR
 
 Route::get('/nav', function(){
@@ -226,7 +267,7 @@ Route::get('/nav', function(){
 });
 
 // BLOG POST
-Route::get('/blog_post', function(){
+Route::get('/blog_post', function(Request $request){
     $blogs = DB::table('blogs')->get();
     
     $show = DB::table('users')->get();
@@ -238,7 +279,12 @@ Route::get('/blog_post', function(){
 Route::get('/single_post', function(Request $request){
     
     $id = $request->blog_id;
- 
+    
+    $show = Blog::where('id',$id)->increment('view',1);
+    
+    Blog::where('id', $id)->update([
+        'view'=> $show
+    ]);
     $blogs = DB::table('blogs')
             ->where('id', $id)
             ->get();

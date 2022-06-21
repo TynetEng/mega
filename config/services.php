@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '889672482017-5jcd1d104lgcut1r4tvh9ddv2dls6bkg.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'https://localhost:8000/auth/google/callback',
+        'redirect' => 'https://blogmega.herokuapp.com/auth/google/callback',
     ],
 
 ];

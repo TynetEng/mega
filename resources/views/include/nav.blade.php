@@ -245,7 +245,7 @@
         text-decoration: none;
     }
     img{
-        width: 35%;    
+        width: 30%;    
     }
     .tin2{
         font-weight: bold;

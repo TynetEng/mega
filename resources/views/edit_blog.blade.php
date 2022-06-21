@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Edit blog</title>
 </head>
 <body>
     <div>
@@ -22,10 +22,10 @@
                 @foreach ($check as $i)
                     <div class="fill">
                         <h3>{!! $i->title !!}</h3>
-                        <p class='cont'>{!! $i->content !!}<span class='bit'>...read more</span></p>
+                        <p class='cont'>{!! $i->content !!}</p>
                         <div class="but d-flex">
                             <div>
-                                <button onclick="editBlog({{$i}})">EDIT</button>
+                                <button onclick="editBlog({{$i}})" class="edit">EDIT</button>
                             </div>
                             <form action="{{route('delete-blog', ['id'=>$i->id])}}" method="post">
                                 @csrf
@@ -49,6 +49,20 @@
         }
         .fill{
             padding-bottom: 10px;
+        }
+        .edit, .del{
+            color: white;
+            border: 0;
+            padding: 3px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .del{
+            background-color: red;
+            margin-left: 10px;
+        }
+        .edit{
+            background-color: teal;
         }
         /* .h3, a{
             color: black;

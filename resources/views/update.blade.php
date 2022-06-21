@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="blog.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
+    <title>Update</title>
 </head>
 <body>
     <div>
@@ -22,7 +22,7 @@
                     <form action='{{route('update')}}' method='POST'>
                         <input type="hidden" name="id" value="{{$data->id}}">
                         <div class='inp'>
-                            <input type='text' name='title' value='{{$data->title}}' class='form-control' >
+                            <input type='text' name='title' value='{!!$data->title!!}' class='form-control' >
                         </div>
                         <div class='edit'>
                             <button onclick='boldText()' type='button'>B</button>
@@ -46,7 +46,7 @@
                             <input type='text' name='blog' id='blog' hidden>
                         </div>
                         <div>
-                            <div contenteditable='true' placeholder=' Enter Blog text' id='textarea' oninput='enterBlog(this)'>{{$data->content}}</div>
+                            <div contenteditable='true' placeholder=' Enter Blog text' id='textarea' oninput='enterBlog(this)'>{!!$data->content!!}</div>
                         </div>
                         @csrf
                         <div class='post'>
@@ -68,6 +68,7 @@
         }
         .headie{
             width: 100%;
+            padding-top: 70px;
         }
         .parent {
             padding: 0% !important;
