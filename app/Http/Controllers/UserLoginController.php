@@ -50,7 +50,7 @@ public function callback()
                     'created_at'=>now()
                 ]);
                 
-                Auth::login($newUser);
+                Auth::login($newUser, true);
                
                 return redirect()->intended('/dashboard');
             }
