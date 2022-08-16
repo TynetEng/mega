@@ -16,30 +16,34 @@
             <div class="panel">
                 @foreach ( $blogs as $blog )
                     <div class='fill'>
-                        <div>
-                            <h3><a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>{{$blog->title}}</a></h3>
-                            <p class='cont'>{!! \Str::limit($blog->content, 100) !!}
-                                <span class='bit'>
-                                    <a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>read more </a>
-                                </span>
-                            </p>
-                        </div>
-                        <div class='blog'>
-                            @foreach ($show as $i)
-                                @if ($blog->user_id == $i->id)
-                                    <p class="d-flex align-items-center"> 
-                                        <span class="own">Blog:</span>
-                                        <span class="displayName">{{$i->firstName}} {{$i->lastName}}</span>
-                                        <span class="px-2 displayTime"><i>{{$blog->time}}</i></span>
+                        <div class="part">
+                            <div class="bot">
+                                <div class="bee">
+                                    <h3><a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>{{$blog->title}}</a></h3>
+                                    <p class='cont'> {{  \Str::limit($blog->content, 100) }} 
+                                        <span class='bit'>
+                                            <a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>read more </a>
+                                        </span>
                                     </p>
-                                @endif
-                            @endforeach
-                            <p>
-                                <span class="own">Views:</span>
-                                <span>{{$blog->view}}</span>
-                            </p>
-                        <div>
-                        <div class="und"></div>
+                                </div>
+                                <div class='blog'>
+                                    @foreach ($show as $i)
+                                        @if ($blog->user_id == $i->id)
+                                            <p class="blogGroup"> 
+                                                <span class="own">Blog:</span>
+                                                <span class="displayName">{{$i->firstName}} {{$i->lastName}}</span>
+                                                <span class="px-2 displayTime"><i>{{$blog->time}}</i></span>
+                                            </p>
+                                        @endif
+                                    @endforeach
+                                    <p>
+                                        <span class="own">Views:</span>
+                                        <span>{{$blog->view}}</span>
+                                    </p>
+                                <div>
+                            </div>
+                        </div>
+                        {{-- <div class="und"></div> --}}
                     </div>
                 
                 @endforeach
@@ -59,9 +63,10 @@
             z-index: -10;
         }
         .parent .panel {
-            display: block;
             margin: 0% 3%;
             padding-top: 70px !important;
+            display:block;
+            column-count: 2 !important;
         }
         .parent .panel .title {
             font-weight: bold;
@@ -76,6 +81,10 @@
         .blog{  
             padding-top: 3px;
         }
+        .blogGroup{
+            display: flex;
+            align-items: center;
+        }
         h6{
             font-weight: bold;
         }
@@ -84,8 +93,24 @@
             
         }
         .fill{
-            padding-top: 5px;
+            /* padding-top: 5px;
             padding-bottom: -10px;
+            height: 100%; */
+        }
+        .bot{
+            box-shadow: 1px 1px 5px 1px lightgray;
+            height: 200px;
+            min-height: 200px !important;
+            max-height: 200px !important;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        .bot:hover{
+            box-shadow: 2px 2px 4px 3px lightgray;
+        }
+        .part{
+            height: 100%;
         }
         .displayName{
             font-weight: bold;
@@ -101,7 +126,7 @@
         }
 
         .und{
-            border-bottom: 3px double teal;
+            
             
         }
         
@@ -115,12 +140,21 @@
                 width: 100% !important;
             }
             .parent .panel {
-                display: block;
+                display: flex;
+                column-count: 0;
                 margin: 1% 2%;
             }
-            h3 a{
+            .bot{
+                height: 400px;
+                min-height: 300px !important;
+                max-height: 300px !important;
+            }
+            /* h3 a{
                 font-size: 18px !important;
                 
+            } */
+            .blogGroup{
+                display: block;
             }
         }
 

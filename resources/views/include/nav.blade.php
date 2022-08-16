@@ -105,46 +105,76 @@
                     <div class="sideBar">
                         <ul class="navbar-nav">
                             <li class="nav-items">
-                                <a href="/dashboard" class="nav-link">
-                                    DASHBOARD
+                                <a href="{{url('dashboard')}}" class="justify-content-center d-flex">
+                                    <div>
+                                        <i class="fa fa-delicious"></i>
+                                    </div>
+                                    <div class="exp">
+                                        <span>DASHBOARD</span>
+                                    </div>
                                 </a>
                             </li>
                             <li class="nav-items">
-                                <a href="profile" class="nav-link">
-                                    PROFILE
+                                <a href="{{url('profile')}}" class="justify-content-center d-flex">
+                                    <div>
+                                        <i class="fa fa-user-circle-o"></i>
+                                    </div>
+                                    <div class="exp">
+                                        <span>PROFILE</span>
+                                    </div>
                                 </a>
                             </li>
                             <li class="nav-items">
-                                <a href="/blog" class="nav-link">
-                                    BLOG
+                                <a href="{{url('blog')}}" class="justify-content-center d-flex">
+                                    <div>
+                                        <i class="fa fa-user-circle-o"></i>
+                                    </div>
+                                    <div class="exp">
+                                        <span>BLOG</span>
+                                    </div>
                                 </a>
                             </li>
                             <li class="nav-items">
-                                <a href="/blog_post" class="nav-link">
-                                    BLOG POST
+                                <a href="{{url('blog_post')}}" class="justify-content-center d-flex">
+                                    <div>
+                                        <i class="fa fa-user-circle-o"></i>
+                                    </div>
+                                    <div class="exp">
+                                        <span>BLOG POST</span>
+                                    </div>
                                 </a>
                             </li>
                             <li class="nav-items">
-                                <a href="/edit_blog" class="nav-link">
-                                    EDIT BLOG
+                                <a href="{{url('edit_blog')}}" class="justify-content-center d-flex">
+                                    <div>
+                                        <i class="fa fa-user-circle-o"></i>
+                                    </div>
+                                    <div class="exp">
+                                        <span>EDIT BLOG</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-items">
+                                <a href="{{url('signup')}}" class="justify-content-center d-flex">
+                                    <div>
+                                        <i class="fa fa-user-circle-o"></i>
+                                    </div>
+                                    <div class="exp">
+                                        <span>SIGNUP</span>
+                                    </div>
                                 </a>
                             </li>
                             <div>
                                 <i class="fa fa-search"></i>
                             </div>
                             <li class="nav-items">
-                                <a href="#" class="nav-link">
-                                    SIGNUP
-                                </a>
-                            </li>
-                            <li class="nav-items">
-                                <a href="#" class="nav-link tel">
-                                    MY ACCOUNT
-                                </a>
-                            </li>
-                            <li class="nav-items">
-                                <a href="/login" class="nav-link">
-                                    LOGIN
+                                <a href="{{url('login')}}" class="justify-content-center d-flex">
+                                    <div>
+                                        <i class="fa fa-sign-in"></i>
+                                    </div>
+                                    <div class="exp">
+                                        <span>LOGIN</span>
+                                    </div>
                                 </a>
                             </li>
                             <li class="nav-items">
@@ -158,8 +188,13 @@
                                 </a>
                             </li>
                             <li class="nav-items">
-                                <a href="#" class="nav-link">
-                                    SETTINGS
+                                <a href="{{url('')}}" class="justify-content-center d-flex">
+                                    <div>
+                                        <i class="fa fa-cog"></i>
+                                    </div>
+                                    <div class="exp">
+                                        <span>SETTINGS</span>
+                                    </div>
                                 </a>
                             </li>
                         </ul>
@@ -187,6 +222,7 @@
     nav{
         width: 100%;
         margin: 0 !important;
+        padding: 0;
         align-items: center;
     }
     .header{
@@ -194,11 +230,11 @@
         width: 100%;
         z-index: 100;
         background-color: white;
-        border-bottom: 3px solid lightseagreen;
+        border-bottom: 3px solid #0B6E6E;
     }
     
     .show a{
-        color: lightseagreen;
+        color: #0B6E6E;
         font-weight: bold;
 
     }
@@ -256,6 +292,9 @@
     }
 
     @media(max-width:760px){
+        nav{
+            margin-top: -10px !important;
+        }
         .sideBar{
             background: white;
             top: 0;
@@ -270,11 +309,14 @@
             line-height: 2.5;
             overflow-y: scroll;
         }
+        ul{
+            padding-left: -3% !important;
+        }
         .sideBar a{
-            color: teal;
+            color: #0B6E6E;
         }
         .bar{
-            color: teal;
+            color: #0B6E6E;
         }
         .left{
             display: flex;

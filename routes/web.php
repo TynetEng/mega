@@ -22,6 +22,10 @@ use PhpParser\Node\Stmt\TryCatch;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// HOME PAGE
+Route::get('/', function () {
+    return view('welcome');
+});
 // SIGNUP
 Route::get('/signup', function () {
     return view('signup');
@@ -178,12 +182,20 @@ Route::get('/logout', function(Request $request){
 
 // DASHBOARD
 Route::get('/dashboard', function(){
-    $a = auth()->user()->firstName;
-    $b = auth()->user()->lastName;
-    $first= substr($a,0,1);
-    $sec= substr($b,0,1);
+    $validateUser =Auth::user()->id;
+    
   
-    return view('dashboard')->with(['first'=>$first, 'second'=>$sec]);
+    try {
+        if($validateUser){
+            $a = auth()->user()->firstName;
+            $b = auth()->user()->lastName;
+            $first= substr($a,0,1);
+            $sec= substr($b,0,1);
+            return view('dashboard')->with(['first'=>$first, 'second'=>$sec]);
+        }
+    } catch (\Throwable $th) {
+        return "You are yet to be a validated user, please signup first";
+    }
     
 })->name('dashboard');
 
@@ -205,6 +217,7 @@ Route::post('/blog', function(Request $request){
             'blog'=>'required'
         ]);
         
+        // $removeContentElement= remove_html_tags($request->blog, array("span","b",'i'));
         $blog= DB::table('blogs')->insert([
             'title'=>$request->title,
             'content'=>$request->blog,
@@ -280,7 +293,7 @@ Route::get('/single_post', function(Request $request){
     
     $id = $request->blog_id;
     
-    $show = Blog::where('id',$id)->increment('view',1);
+    $show = Blog::where('id',$id)->max('view')+1;
     
     Blog::where('id', $id)->update([
         'view'=> $show
@@ -343,7 +356,7 @@ Route::post('/update', function(Request $request){
 })->name('update');
 
 Route::get('/profile', function(){
-    $validateUser = auth()->user()->id;
+    $validateUser = Auth::user()->id;
     $user= User::find($validateUser);
 
     
