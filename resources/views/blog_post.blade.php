@@ -125,11 +125,16 @@
             color: black;
         }
 
-        .und{
-            
-            
-        }
+       
         
+        @media(max-width:1020px){
+            .blogGroup{
+                display: block !important;
+            }
+            .bot{
+                min-height: 250px !important;
+            }
+        }
 
         @media(max-width:760px){
             .parent {
@@ -145,14 +150,8 @@
                 margin: 1% 2%;
             }
             .bot{
-                height: 400px;
                 min-height: 300px !important;
-                max-height: 300px !important;
             }
-            /* h3 a{
-                font-size: 18px !important;
-                
-            } */
             .blogGroup{
                 display: block;
             }

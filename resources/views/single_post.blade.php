@@ -42,6 +42,23 @@
             border: 0;
             background-color: transparent;
         }
+        
+        @media(max-width:1020px){
+            .fa{
+                display: inherit;
+            }
+            .disk{
+                display: flex;
+                align-items: center;
+            }
+            h2{
+                padding-top: 10px;
+                padding-left: 5px;
+            }
+            .con{
+                font-size: 20px;
+            }
+        }
 
         @media(max-width:760px){
             .parentt{

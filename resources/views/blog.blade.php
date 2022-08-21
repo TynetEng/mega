@@ -287,6 +287,10 @@
                 font-weight: bolder;
                 padding-left: 95%;
             }
+
+            @media(max-width:1020px){
+                
+            }
             @media (max-width: 760px) {
                 .parent {
                     width: 100%;
@@ -301,6 +305,16 @@
                 }
                 .panel .edit {
                     line-height: 1.5 !important;
+                }
+                .edit{
+                    width: 100% !important;
+                }
+                .butt {
+                    width: 30px;
+                    height: 30px;
+                }
+                #textarea{
+                    width: 90% !important;
                 }
             }
         </style>
@@ -324,7 +338,7 @@
     
             function enterBlog(params){
                 bg.value = params.innerHTML;
-                console.log(bg.value)
+                // console.log(bg.value)
             }
             
             function boldText(){

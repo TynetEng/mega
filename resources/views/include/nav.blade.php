@@ -40,11 +40,12 @@
                             </button>
                         </div>
                         <div class="collapse navbar-collapse" id="menu">
+                            <div class="inp">
+                                <i class="fa fa-search"></i>
+                                <input type="text" placeholder="Search" class="inpt">
+                            </div>
                             <div class="show">
                                 <ul class="navbar-nav">
-                                    <div>
-                                        <i class="fa fa-search"></i>
-                                    </div>
                                     <li class="nav-items">
                                         <a href="/dashboard" class="nav-link">
                                             DASHBOARD
@@ -232,6 +233,23 @@
         background-color: white;
         border-bottom: 3px solid #0B6E6E;
     }
+    .inp{
+        background-color: rgb(240, 236, 236);
+        padding: 0px 5px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+    }
+    input{
+        border: none;
+        padding: 2px 5px;
+        outline: none !important;
+        background-color: transparent;
+        font-size: 15px;
+    }
+    input::placeholder{
+        color: black;
+    }
     
     .show a{
         color: #0B6E6E;
@@ -291,9 +309,26 @@
         display: inherit;
     }
 
+    @media(max-width:1040px){
+        .collapse{
+            margin-left: -120px;
+        }
+    }
+
+    @media(max-width:1020px){
+        .show{
+            margin-left: -200px !important;
+        }
+        .inp{
+            display: none;
+        }
+    }
+
+
     @media(max-width:760px){
         nav{
             margin-top: -10px !important;
+            width: 100% !important;
         }
         .sideBar{
             background: white;

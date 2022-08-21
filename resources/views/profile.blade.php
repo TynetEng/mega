@@ -11,15 +11,14 @@
     <div>
         @include('include.nav')
     </div>
-    <div class="parent">
+    <div class="parentt">
         @if (session('success'))
             <div class="alert alert-success" role="alert">
                 {{session('success')}}
             </div>
         @endif
         <div class="panel">
-            <div class="team">
-                @foreach ($userImage as $a )
+            @foreach ($userImage as $a )
                     @foreach ($uploadedImg as $i)
                         @if ($a->image==$i->image)
                             <div>
@@ -34,9 +33,6 @@
                         @endif
                     @endforeach
                 @endforeach
-                
-                
-            </div>
             <div>
                 <table>
                     <tr>
@@ -81,11 +77,17 @@
     </div>
 
     <style>
-        .parent{
+        html{
+            padding: 0;
+            margin: 0;
+        }
+        .parentt{
             width: 100%;  
+            padding-top: 100px !important;
         }
         table{
-            width: 100%;
+            width: 100% !important;
+            margin-top: 10px;
         }
         table, tr, td{
             border: 1px solid black;
@@ -115,27 +117,22 @@
         }
 
         .btn{
-            background-color: lightseagreen;
+            background-color: #0B6E6E;
             margin-top: 10px;
             color: white
         }
-        .team{
-            margin: auto;
-            padding: 5px;
-        }
         #imaggg{
-            width: 50px;
-            height: 50px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%
         }
         .panel{
             border: 1px solid lightgray;
             width: 30%;
             padding: 10px;
-            margin: 5px;
-            margin-top: 10px !important;
             border-radius: 5px;
             margin: auto;
+            /* margin-top: 50px; */
             box-shadow: 0px 2px 10px rgba(200, 208, 216, 0.3);
             animation: animatezoom 0.6s;
         }
@@ -152,15 +149,32 @@
             color: white;
         }
 
-        @media(max-width:760px){
+        @media(max-width:1040px){
             .panel{
-                width:100%;
+                width: 50%;
+            }
+        }
+
+        @media(max-width:1020px){
+            .panel{
+                width: 50%;
+            }
+        }
+
+
+        @media(max-width:760px){
+            .parentt{
+                width: 100% !important;  
+                padding-top: 100px !important;
+            }
+            .panel{
+                width:100% !important;
                 margin: 0px !important;
                 border-radius: 0px;
             }
             #imaggg{
-                width: 60px;
-                height: 60px;
+                width: 60px !important;
+                height: 60px !important;
                 border-radius: 50%;
             }
             .imagg{
