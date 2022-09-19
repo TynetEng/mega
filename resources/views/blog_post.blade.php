@@ -20,7 +20,7 @@
                             <div class="bot">
                                 <div class="bee">
                                     <h3><a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>{{$blog->title}}</a></h3>
-                                    <p class='cont'> {{  \Str::limit($blog->content, 100) }} 
+                                    <p class='cont'> {{  \Str::limit(strip_tags($blog->content), 100) }} 
                                         <span class='bit'>
                                             <a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>read more </a>
                                         </span>

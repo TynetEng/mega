@@ -42,7 +42,7 @@
                         <div class="collapse navbar-collapse" id="menu">
                             <div class="inp">
                                 <i class="fa fa-search"></i>
-                                <input type="text" placeholder="Search" class="inpt">
+                                <input type="text" placeholder="Search" class="inpt" onkeyup="searchValue(this.value)">
                             </div>
                             <div class="show">
                                 <ul class="navbar-nav">
@@ -212,6 +212,10 @@
                 $('.sideBar').toggle()   
             })
        })
+
+       function searchValue(params){
+            console.log(params);
+        }
     </script>
 </body>
 </html>
@@ -232,6 +236,9 @@
         z-index: 100;
         background-color: white;
         border-bottom: 3px solid #0B6E6E;
+    }
+    .nav-link:focus{
+        color: #7fb3b3;
     }
     .inp{
         background-color: rgb(240, 236, 236);
@@ -286,7 +293,7 @@
         position: absolute ;
         border: 1px solid lightgray;
         z-index: 100;
-        box-shadow: 1px 1px 1px  black;
+        box-shadow: 2px 2px 4px 3px lightgray;
         display: none;
     }
     .tin{
@@ -305,13 +312,17 @@
         font-weight: bold;
         text-align: center;
     }
+    .drop{
+        display: block;
+        align-items: center;
+    }
     .drop:hover .ex{
         display: inherit;
     }
 
     @media(max-width:1040px){
         .collapse{
-            margin-left: -120px;
+            margin-left: -130px;
         }
     }
 

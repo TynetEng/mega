@@ -98,7 +98,7 @@
             padding: 10px;
         }
         .imgBox{
-            width: 25% !important;
+            width: 100% !important;
         }
         
         .image{

@@ -216,7 +216,7 @@ Route::post('/blog', function(Request $request){
             'title'=>'required',
             'blog'=>'required'
         ]);
-        
+    
         // $removeContentElement= remove_html_tags($request->blog, array("span","b",'i'));
         $blog= DB::table('blogs')->insert([
             'title'=>$request->title,
