@@ -50,7 +50,7 @@
                 <div class="panel">
                     <form action="{{route('blog')}}" method="POST">
                         <div class="inp">
-                            <input type="text" name="title" placeholder="Title" required class="form-control">
+                            <input type="text" name="title" placeholder="Title" required>
                         </div>
                         <div class="edit d-flex justify-content-center">
                             <div class="check">
@@ -221,6 +221,8 @@
                 width: 30%;
                 margin: auto;
                 margin-top: 10px;
+                background-color: red;
+                height: 40px;
             }
             .panel #textarea {
                 width: 60%;
@@ -300,8 +302,9 @@
                 .panel #textarea {
                     width: 100%;
                 }
-                .panel .inp {
-                    width: 50%;
+                .panel .inp{
+                    width: 100%;
+                    background-color: red;
                 }
                 .panel .edit {
                     line-height: 1.5 !important;

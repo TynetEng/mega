@@ -290,7 +290,7 @@
         padding-top: 5px;
         padding-bottom: 5px;
         height: 240px;
-        position: absolute ;
+        position: absolute;
         border: 1px solid lightgray;
         z-index: 100;
         box-shadow: 2px 2px 4px 3px lightgray;
@@ -335,6 +335,14 @@
         }
     }
 
+    @media(max-width:850px){
+        .show{
+            margin-left: -50px !important;
+        }
+        .inp{
+            display: none;
+        }
+    }
 
     @media(max-width:760px){
         nav{
@@ -344,22 +352,22 @@
         .sideBar{
             background: white;
             top: 0;
-            left: -3% !important;
+            margin-left: -3% !important;
             width: 55%;
             height: 100vh;
             position: absolute !important;
             z-index: 1000;
             box-shadow: 0px 0px 2px black;
-            padding: 4% 6%;
+            padding: 4% 0%;
             font-size: 17px;
             line-height: 2.5;
             overflow-y: scroll;
         }
-        ul{
-            padding-left: -3% !important;
-        }
+
         .sideBar a{
             color: #0B6E6E;
+            display: block;
+            padding-left: 10px;
         }
         .bar{
             color: #0B6E6E;
@@ -386,6 +394,9 @@
         nav{
             width: 100% !important;
         }
+        .sideBar .navbar-nav{
+            margin-left: -20px !important;
+        }
         #openSideBar{
             border: 0 !important;
             outline: 0 !important;
@@ -397,6 +408,12 @@
             display: flex;
             text-decoration: none;
         }
-        
+        .sideBar .navbar-nav{
+            display: block;
+            align-items: flex-start
+        }
+        .exp{
+            padding-left: 10px;
+        }
     }
 </style>

@@ -86,8 +86,11 @@
             padding-top: 100px !important;
         }
         table{
-            width: 100% !important;
+            width: 100%;
             margin-top: 10px;
+        }
+        b{
+            font-size: 13px;
         }
         table, tr, td{
             border: 1px solid black;
@@ -149,7 +152,7 @@
             color: white;
         }
 
-        @media(max-width:1040px){
+         @media(max-width:1040px){
             .panel{
                 width: 50%;
             }
@@ -159,26 +162,27 @@
             .panel{
                 width: 50%;
             }
-        }
-
+        } 
 
         @media(max-width:760px){
-            .parentt{
-                width: 100% !important;  
-                padding-top: 100px !important;
-            }
             .panel{
-                width:100% !important;
-                margin: 0px !important;
-                border-radius: 0px;
+                width: 100% !important;
+                margin: 0;
+            }
+            table{
+                width: 100% !important; 
             }
             #imaggg{
                 width: 60px !important;
                 height: 60px !important;
-                border-radius: 50%;
+                border-radius: 50%;  
             }
             .imagg{
-                width: 100%;
+                width: 20% !important;
+            }
+            .imgBox{
+                width: 100% !important;
+                margin-top: 10px;
             }
         }
     </style>
