@@ -15,28 +15,16 @@
     <div class="container">
         <div class="parent">
             <div class="parentt">
-                <div class="" style="margin-top: 50px">
-                    <form action="/search/query" method="GET">
-                        @csrf
-                        <div class="inpp">
-                            <div class="inpt">
-                                <i class="fa fa-search"></i>
-                                <input type="text" placeholder="Search..." class="" name="search">
-                            </div>
-                            <button type="submit" class=""> search</button>
-                        </div>
-                    </form>
-                </div>
                 <div class="panel">
                     @foreach ( $blogs as $blog )
                         <div class='fill'>
                             <div class="part">
                                 <div class="bot">
                                     <div class="bee">
-                                        <h3><a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>{{$blog->title}}</a></h3>
+                                        <h3><a href=/single_post?blog_id={{$blog->id}}&title={{$blog->title}}>{{$blog->title}}</a></h3>
                                         <p class='cont'> {{  \Str::limit(strip_tags($blog->content), 100) }} 
                                             <span class='bit'>
-                                                <a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>read more </a>
+                                                <a href=/single_post?blog_id={{$blog->id}}&title={{$blog->title}}>read more </a>
                                             </span>
                                         </p>
                                     </div>
@@ -95,46 +83,13 @@
             z-index: -10;
         }
         .parentt{
-            padding-top: 40px;
-        }
-        .inpp{
-            display: flex !important;
-            width: 100%;
-            margin-left: 0px;
-            margin-bottom: 10px;
-        }
-        .inpt{
-            width: 20% !important;
-            display: flex;
-            align-items: center;
-            background-color: rgb(240, 236, 236);
-            padding: 0px 5px;
-            border-radius: 5px;
-        }
-        .inpt input{
-            width: 100%;
-            border: none;
-            padding: 2px 5px;
-            outline: none !important;
-            background-color: transparent;
-            font-size: 15px;
-        }
-        .inpp button{
-            margin-left: 10px;
-            background-color: #0B6E6E;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            text-transform: uppercase;
-            font-size: 15px;
-            padding: 2px 10px;
+            padding-top: 60px;
         }
         .parent .panel {
-            /* margin: 0% 3%;
-            padding-top: 20px !important; */
+            margin: 0% 3%;
+            padding-top: 20px !important;
             display:grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-auto-rows: 200px;
+            column-count: 2 !important;
         }
         .parent .panel .title {
             font-weight: bold;
@@ -208,13 +163,6 @@
             .parent {
                 width: 100%;   
             }
-            .inpp{
-                margin-left: 5px !important;
-            }
-            .inpt{
-                width: 70% !important;
-            }
-            
             .fill{
                 width: 100% !important;
             }

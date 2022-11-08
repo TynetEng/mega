@@ -40,10 +40,6 @@
                             </button>
                         </div>
                         <div class="collapse navbar-collapse" id="menu">
-                            <div class="inp">
-                                <i class="fa fa-search"></i>
-                                <input type="text" placeholder="Search" class="inpt" onkeyup="searchValue(this.value)">
-                            </div>
                             <div class="show">
                                 <ul class="navbar-nav">
                                     <li class="nav-items">
@@ -165,9 +161,6 @@
                                     </div>
                                 </a>
                             </li>
-                            <div>
-                                <i class="fa fa-search"></i>
-                            </div>
                             <li class="nav-items">
                                 <a href="{{url('login')}}" class="justify-content-center d-flex">
                                     <div>
@@ -205,6 +198,12 @@
         </div>
     </nav>
 
+    <body>
+        <div class="parent">
+
+        </div>
+    </body>
+
     <script>
        $(document).ready(function(){
             $('.sideBar').hide()
@@ -212,10 +211,6 @@
                 $('.sideBar').toggle()   
             })
        })
-
-       function searchValue(params){
-            console.log(params);
-        }
     </script>
 </body>
 </html>
@@ -223,6 +218,10 @@
 <style>
     html,body{ 
         margin: 0px;
+    }
+    .navbar{
+        display: flex;
+        justify-content: space-between;
     }
     nav{
         width: 100%;
@@ -240,28 +239,9 @@
     .nav-link:focus{
         color: #7fb3b3;
     }
-    .inp{
-        background-color: rgb(240, 236, 236);
-        padding: 0px 5px;
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-    }
-    input{
-        border: none;
-        padding: 2px 5px;
-        outline: none !important;
-        background-color: transparent;
-        font-size: 15px;
-    }
-    input::placeholder{
-        color: black;
-    }
-    
     .show a{
         color: #0B6E6E;
         font-weight: bold;
-
     }
     .show a:hover{
         color: rgb(226, 223, 223);
@@ -273,13 +253,16 @@
         display: flex;
         align-items: center;
     }
+    .collapse{
+        margin-left: 250px;
+    }
     .pro{
-        width: 100% !important;
+        /* width: 100% !important;
         padding: 0px;
-        margin: 0px;
+        margin: 0px; */
         display: flex;
         align-items: center;
-        justify-content: space-around !important;
+        justify-content: space-between !important;
     }
     .ex{
         background-color: white;
@@ -319,16 +302,17 @@
     .drop:hover .ex{
         display: inherit;
     }
+    
 
     @media(max-width:1040px){
         .collapse{
-            margin-left: -130px;
+            margin-left: -98px;
         }
     }
 
     @media(max-width:1020px){
         .show{
-            margin-left: -200px !important;
+            margin-left: 70px !important;
         }
         .inp{
             display: none;
@@ -338,9 +322,6 @@
     @media(max-width:850px){
         .show{
             margin-left: -50px !important;
-        }
-        .inp{
-            display: none;
         }
     }
 
@@ -352,16 +333,17 @@
         .sideBar{
             background: white;
             top: 0;
-            margin-left: -3% !important;
+            margin-left: -7% !important;
             width: 55%;
-            height: 100vh;
+            height: 100vh !important;
             position: absolute !important;
             z-index: 1000;
             box-shadow: 0px 0px 2px black;
             padding: 4% 0%;
             font-size: 17px;
             line-height: 2.5;
-            overflow-y: scroll;
+            margin-top: 10px !important;
+           
         }
 
         .sideBar a{

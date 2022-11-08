@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Password;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserLoginController;
 use PhpParser\Node\Stmt\TryCatch;
 
 /*
@@ -279,6 +281,7 @@ Route::get('/nav', function(){
     return view('include.nav');
 });
 
+
 // BLOG POST
 Route::get('/blog_post', function(Request $request){
     $blogs = DB::table('blogs')->get();
@@ -419,6 +422,8 @@ Route::post('profile', function(Request $req){
         return "error";
     }
 });
+
+Route::get('/search/query', [SearchController::class, 'query']);
 
 Route::get('/welcome', function(Request $request){ 
     
