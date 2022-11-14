@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Blogs</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
     <div>
         @include('include.nav')
     </div>
+
     <div class="container">
         <div class="parent">
             <div class="parentt">
@@ -27,38 +26,38 @@
                         </div>
                     </form>
                 </div>
+
                 <div class="panel">
-                    @foreach ( $blogs as $blog )
-                        <div class='fill'>
-                            <div class="part">
-                                <div class="bot">
-                                    <div class="bee">
-                                        <h3><a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>{{$blog->title}}</a></h3>
-                                        <p class='cont'> {{  \Str::limit(strip_tags($blog->content), 100) }} 
-                                            <span class='bit'>
-                                                <a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>read more </a>
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <div class='blog'>
-                                        @foreach ($show as $i)
-                                            @if ($blog->user_id == $i->id)
-                                                <p class="blogGroup"> 
-                                                    <span class="own">Blog:  </span>
-                                                    <span class="displayName">{{ $i->firstName}} {{$i->lastName}}</span>
-                                                    <span class="px-2 displayTime"><i>{{$blog->time}}</i></span>
-                                                </p>
-                                            @endif
-                                        @endforeach
-                                        <p>
-                                            <span class="own">Views:</span>
-                                            <span>{{$blog->view}}</span>
-                                        </p>
-                                    <div>
+                    @foreach ($blogs as $blog )
+                    <div>
+                        <div>
+                            <div class="bot">
+                                <div class="bee">
+                                    <h3><a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>{{$blog->title}}</a></h3>
+                                    <p class='cont'> {{  \Str::limit(strip_tags($blog->content), 100) }} 
+                                        <span class='bit'>
+                                            <a href=single_post?blog_id={{$blog->id}}&title={{$blog->title}}>read more </a>
+                                        </span>
+                                    </p>
                                 </div>
+                                <div class='blog'>
+                                    @foreach ($show as $i)
+                                        @if ($blog->user_id == $i->id)
+                                            <p class="blogGroup"> 
+                                                <span class="own">Blog:  </span>
+                                                <span class="displayName">{{ $i->firstName}} {{$i->lastName}}</span>
+                                                <span class="px-2 displayTime"><i>{{$blog->time}}</i></span>
+                                            </p>
+                                        @endif
+                                    @endforeach
+                                    <p>
+                                        <span class="own">Views:</span>
+                                        <span>{{$blog->view}}</span>
+                                    </p>
+                                <div>
                             </div>
                         </div>
-                    
+                    </div>
                     @endforeach
                 </div>
             </div>
@@ -112,12 +111,10 @@
             padding: 2px 10px;
         }
         .panel{
-            padding-top: 20px !important;
-            padding: 10px 0px;
             display: block;
+            /* flex-wrap: wrap; */
             column-count: 2;
-            flex-wrap: wrap;
-            
+            /* width: 100%; */
         }
         .parent .panel .title {
             font-weight: bold;
@@ -143,7 +140,6 @@
             color: black !important;
             
         }
-        
         .bot{
             box-shadow: 1px 1px 5px 1px lightgray;
             height: 200px;
@@ -151,12 +147,12 @@
             max-height: 200px !important;
             padding: 10px;
             margin-bottom: 10px;
-            width: 100%;
+            /* width: 50% !important; */
+            padding: 10px 10px;
         }
         .bot:hover{
             box-shadow: 2px 2px 4px 3px lightgray;
         }
-       
         .displayName{
             font-weight: bold;
             font-size: 16px;
@@ -169,45 +165,6 @@
             text-decoration: none;
             color: black;
         }
-
-       
-        
-        @media(max-width:1020px){
-            .blogGroup{
-                display: block !important;
-            }
-            .bot{
-                min-height: 250px !important;
-            }
-        }
-
-        @media(max-width:760px){
-            .parent {
-                width: 100%;   
-            }
-            .inpp{
-                margin-left: 5px !important;
-            }
-            .inpt{
-                width: 70% !important;
-            }
-            
-            .fill{
-                width: 100% !important;
-            }
-            .panel {
-                display: flex !important;
-                column-count: 0 !important;
-            }
-            .bot{
-                min-height: 300px !important;
-            }
-            .blogGroup{
-                display: block;
-            }
-        }
-
     </style>
 </body>
 </html>
-

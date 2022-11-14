@@ -26,7 +26,7 @@
         <div>
             @include('include.nav')
         </div>
-        <div class="parent">
+        <div class="parentt">
             <div>
                 @if (session('success'))
                     <div class="alert alert-success" role="alert">
@@ -176,14 +176,14 @@
             
             .headie{
                 width: 100%;
-                padding-top: 70px !important;
+                padding-top: 5px !important;
             }
-            .parent {
-                padding: 0% !important;
+            .parentt {
+                padding-top: 70px !important;
                 width: 100%;
                 margin: auto;
             }
-            .parent .headie h3 {
+            .parentt .headie h3 {
                 text-align: center;
                 padding-top: 3%;
             }
@@ -297,9 +297,9 @@
                 
             }
             @media (max-width: 760px) {
-                .parent {
+                .parentt {
                     width: 100%;
-                    padding: 5% 2%;
+                    padding-top: 50px !important;
                 }
         
                 .panel #textarea {
@@ -307,7 +307,6 @@
                 }
                 .panel .inp{
                     width: 100%;
-                    background-color: red;
                 }
                 .panel .edit {
                     line-height: 1.5 !important;
