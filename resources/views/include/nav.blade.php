@@ -257,9 +257,6 @@
         margin-left: 250px;
     }
     .pro{
-        /* width: 100% !important;
-        padding: 0px;
-        margin: 0px; */
         display: flex;
         align-items: center;
         justify-content: space-between !important;
@@ -342,8 +339,7 @@
             padding: 4% 0%;
             font-size: 17px;
             line-height: 2.5;
-            margin-top: 10px !important;
-           
+            margin-top: 10px !important;   
         }
 
         .sideBar a{

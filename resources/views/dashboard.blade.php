@@ -25,7 +25,6 @@
                 <h2>DASHBOARD</h2>
                 <div class='team'>
                     <div class='img'>
-                        
                         <span class='let'>{{$first}}</span>
                         <span class='let'>{{$second}}</span>
                     </div>
@@ -33,7 +32,7 @@
             </div>
                
             <footer>
-                <h5>Tynet Empire</h5>
+                <h5><span>Welcome</span> Tynet Empire</h5>
             </footer>
         </div>
 

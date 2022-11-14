@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('image/mega.png')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Blogs</title>
+    <title> Search Blogs</title>
 </head>
 <body>
     <div>
@@ -45,7 +46,6 @@
                                     <div>
                                 </div>
                             </div>
-                            {{-- <div class="und"></div> --}}
                         </div>
                     
                     @endforeach
@@ -54,23 +54,7 @@
         </div>
     </div>
 
-    <script>
-         function searchValue(params){
-            // console.log(params);
-            let display = params;
-            console.log(display);
-            $.ajax({
-                type:'get',
-                url: '{{URL::to('search')}}',
-                data: {'search': display},
-                success: function(data){
 
-                    $('.parent').html(data);
-                    console.log("success");
-                }
-            })
-        }
-    </script>
     <style>
         html, body {
             margin: 0px !important;
@@ -88,8 +72,13 @@
         .parent .panel {
             margin: 0% 3%;
             padding-top: 20px !important;
-            display:grid;
-            column-count: 2 !important;
+            padding: 10px 0px;
+            display: block;
+            column-count: 2;
+            flex-wrap: wrap;
+        }
+        .bot{
+            flex-wrap: wrap;
         }
         .parent .panel .title {
             font-weight: bold;

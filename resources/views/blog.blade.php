@@ -49,8 +49,8 @@
             </div>
                 <div class="panel">
                     <form action="{{route('blog')}}" method="POST">
-                        <div class="inp">
-                            <input type="text" name="title" placeholder="Title" required>
+                        <div class="titlteInput">
+                            <input class="m-auto" type="text" name="title" placeholder="Title" required>
                         </div>
                         <div class="edit d-flex justify-content-center">
                             <div class="check">
@@ -217,12 +217,12 @@
             .panel {
                 width: 100%;
             }
-            .panel .inp {
-                width: 30%;
-                margin: auto;
+            .panel .titlteInput {
+                margin: auto !important;
                 margin-top: 10px;
-                background-color: red;
                 height: 40px;
+                width: 100%;
+                text-align: center;
             }
             .panel #textarea {
                 width: 60%;
@@ -238,6 +238,9 @@
                 margin-top: 20px;
                 text-align: center;
                 align-items: center;
+            }
+            .panel form{
+                margin: auto;
             }
             .butt {
                 border: none;

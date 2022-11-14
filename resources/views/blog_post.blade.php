@@ -57,7 +57,6 @@
                                     <div>
                                 </div>
                             </div>
-                            {{-- <div class="und"></div> --}}
                         </div>
                     
                     @endforeach
@@ -66,23 +65,6 @@
         </div>
     </div>
 
-    <script>
-         function searchValue(params){
-            // console.log(params);
-            let display = params;
-            console.log(display);
-            $.ajax({
-                type:'get',
-                url: '{{URL::to('search')}}',
-                data: {'search': display},
-                success: function(data){
-
-                    $('.parent').html(data);
-                    console.log("success");
-                }
-            })
-        }
-    </script>
     <style>
         html, body {
             margin: 0px !important;
@@ -129,13 +111,14 @@
             font-size: 15px;
             padding: 2px 10px;
         }
-        .parent .panel {
-            /* margin: 0% 3%;
-            padding-top: 20px !important; */
-            display:grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-auto-rows: 200px;
-        }
+        /* .panel{
+            padding-top: 20px !important;
+            padding: 10px 0px;
+            /* display: flex; */
+            /* column-count: 2; */
+            flex-wrap: wrap;
+            
+        } */
         .parent .panel .title {
             font-weight: bold;
         }
@@ -161,9 +144,9 @@
             
         }
         .fill{
-            /* padding-top: 5px;
-            padding-bottom: -10px;
-            height: 100%; */
+            background-color: red;
+            display: flex;
+            flex-wrap: wrap;
         }
         .bot{
             box-shadow: 1px 1px 5px 1px lightgray;
@@ -172,14 +155,14 @@
             max-height: 200px !important;
             padding: 10px;
             margin-bottom: 10px;
-            width: 100%;
+            width: 40%;
         }
         .bot:hover{
             box-shadow: 2px 2px 4px 3px lightgray;
         }
-        .part{
+        /* .part{
             height: 100%;
-        }
+        } */
         .displayName{
             font-weight: bold;
             font-size: 16px;

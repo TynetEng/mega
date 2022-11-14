@@ -291,6 +291,7 @@ Route::get('/blog_post', function(Request $request){
     return view('blog_post')->with(['blogs'=>$blogs, 'show'=>$show]);
 });
 
+
 // SINGLE BLOG POST
 Route::get('/single_post', function(Request $request){
     
