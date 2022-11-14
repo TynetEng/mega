@@ -173,19 +173,20 @@
         </div>
 
         <style>
-            
+            html, body{
+                margin: 0px;
+                padding: 0px;
+            }
             .headie{
-                width: 100%;
                 padding-top: 5px !important;
             }
             .parentt {
                 padding-top: 70px !important;
-                width: 100%;
+                width: 100% !important;
                 margin: auto;
             }
             .parentt .headie h3 {
                 text-align: center;
-                padding-top: 3%;
             }
             .teal{
                 background-color: teal;
@@ -215,7 +216,7 @@
             }
 
             .panel {
-                width: 100%;
+                width: 100% !important;
             }
             .panel .titlteInput {
                 margin: auto !important;
@@ -226,6 +227,7 @@
             }
             .panel #textarea {
                 width: 60%;
+                min-width: 60%;
                 margin-top: 10px;
                 border: 1px solid lightgrey;
                 min-height: 40%;
@@ -303,7 +305,7 @@
                 }
         
                 .panel #textarea {
-                    width: 100%;
+                    width: 100% !important;
                 }
                 .panel .inp{
                     width: 100%;
