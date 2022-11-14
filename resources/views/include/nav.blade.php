@@ -68,7 +68,7 @@
                                         </a>
                                         <div class="ex">
                                             <div class="tin">
-                                                <a href="/index">
+                                                <a href="/signup">
                                                     SIGNUP
                                                 </a>
                                             </div>
