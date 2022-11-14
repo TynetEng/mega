@@ -184,6 +184,7 @@
                 padding-top: 70px !important;
                 width: 100% !important;
                 margin: auto;
+                overflow-x: hidden;
             }
             .parentt .headie h3 {
                 text-align: center;
