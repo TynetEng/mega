@@ -231,7 +231,8 @@ Route::post('/blog', function(Request $request){
         session()->flash('success', 'Blog posted successfully');
         return redirect()->back();
     }catch (\Throwable $th) {
-        session()->flash('error', 'ERROR');
+        // session()->flash('error', 'ERROR');
+        dd($blog);
         return redirect()->back();
     }
 })->name('blog');
