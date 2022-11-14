@@ -234,8 +234,25 @@ Route::post('/blog', function(Request $request){
         }
         
     }catch (\Throwable $th) {
-        session()->flash('error', 'ERROR');
+        $request->validate([
+            'title'=>'required',
+            'blog'=>'required'
+        ]);
+    
+        // $removeContentElement= remove_html_tags($request->blog, array("span","b",'i'));
+        $blog= DB::table('blogs')->insert([
+            'title'=>$request->title,
+            'content'=>$request->blog,
+            'user_id'=>$validateUser,
+            'time'=>now(),
+            'view'=>0,
+            'image'=>0
+        ]); 
+        dd($blog);
+        session()->flash('success', 'Blog posted successfully');
         return redirect()->back();
+        // session()->flash('error', 'ERROR');
+        // return redirect()->back();
     }
 })->name('blog');
 
