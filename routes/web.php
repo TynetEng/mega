@@ -234,7 +234,13 @@ Route::post('/blog', function(Request $request){
         }
         
     }catch (\Throwable $th) {
-        dd(DB::table('blogs')->first());
+        $users = DB::table('blogs')->get();
+ 
+        foreach ($users as $user)
+        {
+            var_dump($user->title);
+        }
+        
         // session()->flash('error', 'ERROR');
         // return redirect()->back();
     }
