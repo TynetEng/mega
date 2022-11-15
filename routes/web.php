@@ -228,7 +228,7 @@ Route::post('/blog', function(Request $request){
                 'view'=>0,
                 'image'=>0
             ]); 
-            dd($blog);
+            
             session()->flash('success', 'Blog posted successfully');
             return redirect()->back();
         }
