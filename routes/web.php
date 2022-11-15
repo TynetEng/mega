@@ -234,11 +234,11 @@ Route::post('/blog', function(Request $request){
         }
         
     }catch (\Throwable $th) {
-        $users = DB::table('blogs')->get();
+        $users = DB::table('users')->get();
  
         foreach ($users as $user)
         {
-            var_dump($user->title);
+            var_dump($user->firstName);
         }
         
         // session()->flash('error', 'ERROR');
