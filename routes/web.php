@@ -210,10 +210,10 @@ Route::post('/blog', function(Request $request){
     $validateUser = auth()->user()->id;
     
     try {
-        // if(!$validateUser){
-        //     session()->flash('error', 'Please signup first');
-        //     return redirect()->route('signup');
-        // }else{
+        if(!$validateUser){
+            session()->flash('error', 'Please signup first');
+            return redirect()->route('signup');
+        }else{
             $request->validate([
                 'title'=>'required',
                 'blog'=>'required'
@@ -231,10 +231,10 @@ Route::post('/blog', function(Request $request){
             dd($blog);
             session()->flash('success', 'Blog posted successfully');
             return redirect()->back();
-        // }
+        }
         
     }catch (\Throwable $th) {
-        dd("hello");
+        dd(DB::table('blogs')->get());
         // session()->flash('error', 'ERROR');
         // return redirect()->back();
     }
