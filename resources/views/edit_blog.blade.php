@@ -29,7 +29,7 @@
                             </div>
                             <form action="{{route('delete-blog', ['id'=>$i->id])}}" method="post">
                                 @csrf
-                                <button class="del" type="submit" onclick="return confirm('Are you sure you want to delete this contestant?')">
+                                <button class="del" type="submit" onclick="return confirm('Are you sure you want to delete this blog?')">
                                      DELETE</button>
                             </form>
                         </div>
