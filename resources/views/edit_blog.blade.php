@@ -11,7 +11,7 @@
     <div>
         @include('include.nav')
     </div>
-    <div class="parent">
+    <div class="parentt container">
         <div class="panel">
             @if (session('success'))
                 <div class="alert alert-success" role="alert">
@@ -40,9 +40,11 @@
     </div>
 
     <style>
+        .parentt{
+            padding-top: 70px !important;
+        }
         .panel{
             padding: 2%;
-            padding-top: 70px !important;
         }
         .bit{
             font-weight: bold
@@ -69,6 +71,9 @@
             text-decoration: none;
         } */
         @media(max-width:760px){
+            .parentt{
+                padding-top: 70px !important;
+            }
             .panel{
                 margin: auto;
                 padding:1% !important;
