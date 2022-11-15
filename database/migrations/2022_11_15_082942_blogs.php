@@ -21,7 +21,6 @@ class Blogs extends Migration
             $table->string('time');
             $table->bigInteger('view');
             $table->bigInteger('user_id');
-            $table->timestamp('created_at')->now();
             $table->timestamp('updated_at')->nullable();
         });
     }
