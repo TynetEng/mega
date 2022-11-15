@@ -234,7 +234,7 @@ Route::post('/blog', function(Request $request){
         }
         
     }catch (\Throwable $th) {
-        dd(DB::table('blogs')->get());
+        dd(DB::table('blogs')->find());
         // session()->flash('error', 'ERROR');
         // return redirect()->back();
     }
