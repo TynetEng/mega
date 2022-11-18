@@ -208,7 +208,7 @@ Route::get('/blog', function(){
 });
 Route::post('/blog', function(Request $request){
     $validateUser = auth()->user()->id;
-    dd($validateUser);
+
     if(!$validateUser){
         session()->flash('error', 'Please signup first');
         return redirect()->route('signup');
