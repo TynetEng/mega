@@ -207,7 +207,7 @@ Route::get('/blog', function(){
     return view('blog');
 });
 Route::post('/blog', function(Request $request){
-    $validateUser = auth()->user()->id;
+    $validateUser = Auth::user()->id;
 
     if(!$validateUser){
         session()->flash('error', 'Please signup first');
