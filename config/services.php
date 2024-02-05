@@ -31,9 +31,9 @@ return [
     ],
 
     'google' => [
-        'client_id' => '889672482017-5jcd1d104lgcut1r4tvh9ddv2dls6bkg.apps.googleusercontent.com',
-        'client_secret' => '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',
-        'redirect' => 'https://blogmega.herokuapp.com/auth/google/callback',
+        'client_id' => '701927931779-l75ugg2mm95ot1s4dh6obh2b5o20gkut.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'https://megablog.oluwatoyin-agbesua-portfolio.com.ng/auth/google/callback',
     ],
 
 ];

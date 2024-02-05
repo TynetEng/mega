@@ -28,6 +28,14 @@ use PhpParser\Node\Stmt\TryCatch;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// To run migration
+Route::get('/run-migration', function () {
+    Artisan::call('optimize:clear');
+    Artisan::call('migrate:refresh --seed');
+    return "migration executed successfully";
+});
+
 // SIGNUP
 Route::get('/signup', function () {
     return view('signup');

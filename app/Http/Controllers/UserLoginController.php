@@ -23,10 +23,10 @@ public function callback()
         
         $user = Socialite::driver('google')->stateless()->user();
         
+        $logUserId= User::where('email', $user->email)->first();
         
         $findUser = User::where('google_id', $user->id)->first();
-        // var_dump($findUser);
-
+       
         $duplicateEmail = User::where('email', $user->email)->first();
         
 
@@ -35,7 +35,7 @@ public function callback()
                 return redirect('/dashboard');
             }
             elseif($duplicateEmail){
-                Auth::login($findUser);
+                Auth::loginUsingId($logUserId->id);
                 return redirect('/dashboard');
             }else{
                 $newUser = User::insert([
